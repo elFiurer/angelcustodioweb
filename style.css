@@ -92,16 +92,18 @@ header .header-highlight-2 {
   /* font-weight ya lo toma del padre si no lo sobrescribes */
 }
 /* Fondo para la sección Hero/Destacada */
-/* Fondo para la sección Hero/Destacada (CORREGIDO) */
+/* Fondo para la sección Hero/Destacada (CORREGIDO Y OPTIMIZADO PARA MÓVILES) */
 .hero-background {
     background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('imagen/fondo-hero.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: fixed; /* Efecto parallax */
+    /* Por defecto, no usamos 'fixed' para asegurar compatibilidad con móviles y tablets */
 }
 
-/* Opcional: Para el efecto parallax (comentar si no se quiere) */
-.hero-background {
+/* Aplicamos el efecto parallax 'fixed' SOLO en pantallas grandes (más de 1024px) */
+@media (min-width: 1024px) {
+  .hero-background {
     background-attachment: fixed;
+  }
 }
