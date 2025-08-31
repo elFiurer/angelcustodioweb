@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I.E. Ángel Custodio García Ramírez</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            #directivos { background-color: #e7f3b9; }
+            #propuesta { background-color: #cbfdbe; }
+        }
+    </style>
+</head>
+
+<body class="bg-white text-gray-800">
+
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center p-4">
+            <div class="flex items-center space-x-3">
+                <img src="imagen/insignia.png" alt="Insignia del Colegio" class="w-14 h-14">
+                <a href="index.html" class="text-lg sm:text-xl font-bold">
+                    <span class="header-highlight-1">Ángel</span> <span class="header-highlight-2">Custodio</span>
+                    <span class="text-blue-900">García</span> <span class="header-highlight-2">Ramírez</span>
+                </a>
+            </div>
+            <nav class="hidden lg:flex space-x-7 items-center">
+                <a href="index.html" class="text-gray-600 hover:text-blue-800 font-medium">Inicio</a>
+                <div class="relative group">
+                    <button class="text-gray-600 hover:text-blue-800 font-medium flex items-center">
+                        Nuestro Colegio <i class="fas fa-chevron-down ml-2 text-xs"></i>
+                    </button>
+                    <div class="absolute hidden group-hover:block pt-2 w-56 z-50">
+                        <div class="bg-white shadow-lg rounded-md border border-gray-100 py-2">
+                            <a href="#directivos"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50">Directivos</a>
+                            <a href="#quienes-somos"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50">Quiénes Somos</a>
+                            <a href="#propuesta" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50">Nuestra
+                                Propuesta</a>
+                        </div>
+                    </div>
+                </div>
+                <a href="#niveles" class="text-gray-600 hover:text-blue-800 font-medium">Niveles</a>
+                <a href="#admision" class="text-gray-600 hover:text-blue-800 font-medium">Admisión 2026</a>
+                <div class="relative group">
+                    <button class="text-gray-600 hover:text-blue-800 font-medium flex items-center">
+                        Docentes <i class="fas fa-chevron-down ml-2 text-xs"></i>
+                    </button>
+                    <div class="absolute hidden group-hover:block pt-2 w-56 z-50">
+                        <div class="bg-white shadow-lg rounded-md border border-gray-100 py-2">
+                            <a href="intranet.html"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50">Intranet</a>
+                            <a href="https://caicedoeduca.com/"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50" target="_blank"
+                                rel="noopener noreferrer">Caicedo Educa</a>
+                        </div>
+                    </div>
+                </div>
+                <a href="#noticias" class="text-gray-600 hover:text-blue-800 font-medium">Noticias</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <a href="#contacto"
+                    class="hidden sm:inline-block bg-yellow-500 text-blue-900 font-bold py-2 px-5 rounded-full hover:bg-yellow-400 transition">Contáctanos</a>
+                <button id="menu-btn" class="lg:hidden text-2xl text-blue-900">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden lg:hidden bg-white p-4 border-t">
+            <a href="index.html" class="block py-2 px-4 text-gray-700 hover:bg-blue-50 rounded-md">Inicio</a>
+            <a href="#directivos" class="block py-2 px-4 text-gray-700 hover:bg-blue-50 rounded-md">Directivos</a>
+            <a href="#quienes-somos" class="block py-2 px-4 text-gray-700 hover:bg-blue-50 rounded-md">Quiénes Somos</a>
+            <a href="#propuesta" class="block py-2 px-4 text-gray-700 hover:bg-blue-50 rounded-md">Nuestra Propuesta</a>
+            <a href="#niveles" class="block py-2 px-4 text-gray-700 hover:bg-blue-50 rounded-md">Niveles</a>
+            <a href="#admision" class="block py-2 px-4 text-gray-700 hover:bg-blue-50 rounded-md">Admisión 2026</a>
+            <a href="#noticias" class="block py-2 px-4 text-gray-700 hover:bg-blue-50 rounded-md">Noticias</a>
+            <a href="#contacto" class="block py-2 px-4 text-gray-700 hover:bg-blue-50 rounded-md">Contáctanos</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-background text-white min-h-screen flex items-center">
+            <div class="container mx-auto px-6 lg:px-8 text-left">
+                <h1 id="main-headline" class="text-4xl md:text-6xl font-extrabold leading-tight">"Plataforma Académica – I.E. Ángel Custodio García Ramírez 2025" </h1>
+                <p class="mt-4 text-lg md:text-2xl max-w-2xl">Forjando a los líderes del mañana con una
+                    educación de calidad - TARAPOTO</p>
+                <a href="#admision"
+                    class="mt-8 inline-block bg-yellow-500 text-blue-900 font-bold py-3 px-8 rounded-full text-lg hover:bg-yellow-400 transition">Matrícula
+                    2026</a>
+            </div>
+        </section>
+
+        <section id="directivos" class="py-16 bg-gray-50 overflow-hidden">
+            <div class="container mx-auto px-6 lg:px-8 text-center">
+                <h2 class="text-3xl font-bold text-blue-900">Nuestro Equipo Directivo</h2>
+                <p class="mt-4 text-gray-600 max-w-3xl mx-auto">Líderes comprometidos con la excelencia educativa y el
+                    bienestar de nuestros estudiantes.</p>
+                <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="text-center animate-on-scroll">
+                        <a href="director.html" class="group">
+                            <div
+                                class="relative w-72 h-72 mx-auto rounded-full overflow-hidden shadow-lg transform group-hover:scale-105 transition-transform">
+                                <img src="imagen/director.jpg" alt="Foto del Director"
+                                    class="w-full h-full object-cover">
+                            </div>
+                            <h3 class="text-xl font-bold mt-4">PAREDES RAMÍREZ JULIO CESAR</h3>
+                            <p class="text-gray-600">Director General</p>
+                        </a>
+                    </div>
+                    <div class="text-center animate-on-scroll">
+                        <a href="subdirectora_secundaria.html" class="group">
+                            <div
+                                class="relative w-72 h-72 mx-auto rounded-full overflow-hidden shadow-lg transform group-hover:scale-105 transition-transform">
+                                <img src="imagen/subdirectora-secundaria.jpg"
+                                    alt="Foto de la Subdirectora de Secundaria" class="w-full h-full object-cover">
+                            </div>
+                            <h3 class="text-xl font-bold mt-4">ARAUJO VELA DOLIBETH</h3>
+                            <p class="text-gray-600">Subdirectora de Secundaria</p>
+                        </a>
+                    </div>
+                    <div class="text-center animate-on-scroll">
+                        <a href="subdirectora_primaria.html" class="group">
+                            <div
+                                class="relative w-72 h-72 mx-auto rounded-full overflow-hidden shadow-lg transform group-hover:scale-105 transition-transform">
+                                <img src="imagen/subdirectora-primaria.jpg" alt="Foto de la Subdirectora de Primaria"
+                                    class="w-full h-full object-cover">
+                            </div>
+                            <h3 class="text-xl font-bold mt-4">MAYURI EURIBE ANGELICA MARIA</h3>
+                            <p class="text-gray-600">Subdirectora de Primaria</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="propuesta" class="py-16 bg-gray-50 overflow-hidden">
+            <div class="container mx-auto px-6 lg:px-8 text-center">
+                <h2 class="text-3xl font-bold text-blue-900">Nuestra Propuesta Educativa</h2>
+                <p class="mt-4 text-gray-600 max-w-3xl mx-auto">Descubre los pilares que hacen de nuestra enseñanza una
+                    experiencia única y completa para el desarrollo de nuestros estudiantes.</p>
+                <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+                    <div
+                        class="bg-white p-8 rounded-lg shadow-lg flex flex-col h-full transform transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl animate-on-scroll">
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-book-open text-4xl text-blue-800 mb-4"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Excelencia Académica</h3>
+                        <p class="text-gray-600 text-left flex-grow">Brindamos una educación de alto nivel que prepara a
+                            nuestros estudiantes para los desafíos universitarios y profesionales. Nos enfocamos en el
+                            pensamiento crítico y una sólida base de conocimientos para asegurar su éxito y hacer
+                            realidad sus aspiraciones.</p>
+                    </div>
+
+                    <div
+                        class="bg-white p-8 rounded-lg shadow-lg flex flex-col h-full transform transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl animate-on-scroll">
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-heart text-4xl text-blue-800 mb-4"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Formación en Valores</h3>
+                        <p class="text-gray-600 text-left flex-grow">Creemos que la educación va más allá de las aulas.
+                            Fomentamos activamente valores como el respeto, la responsabilidad y la solidaridad,
+                            formando no solo grandes estudiantes, sino también ciudadanos íntegros y comprometidos con
+                            su comunidad aquí en Tarapoto.</p>
+                    </div>
+
+                    <div
+                        class="bg-white p-8 rounded-lg shadow-lg flex flex-col h-full transform transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl animate-on-scroll">
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-atom text-4xl text-blue-800 mb-4"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Innovación y Tecnología</h3>
+                        <p class="text-gray-600 text-left flex-grow">Preparamos a nuestros alumnos para el mundo
+                            digital. Contamos con laboratorios y herramientas tecnológicas que integran la innovación en
+                            el aprendizaje diario, desarrollando en ellos las habilidades y competencias que demanda el
+                            futuro.</p>
+                    </div>
+
+                    <div
+                        class="bg-white p-8 rounded-lg shadow-lg flex flex-col h-full transform transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl animate-on-scroll">
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-palette text-4xl text-blue-800 mb-4"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Talleres y Deportes</h3>
+                        <p class="text-gray-600 text-left flex-grow">El desarrollo integral es nuestra prioridad. A
+                            través de talleres artísticos, culturales y deportivos, nuestros estudiantes exploran sus
+                            pasiones, desarrollan nuevos talentos y aprenden el valor del trabajo en equipo, la
+                            disciplina y la vida saludable.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="niveles" class="py-16 bg-gray-50 overflow-hidden">
+            <div class="container mx-auto px-6 lg:px-8 text-center">
+                <h2 class="text-3xl font-bold text-blue-900">Conoce Nuestros Niveles</h2>
+                <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden animate-on-scroll">
+                        <img src="https://placehold.co/600x400/60A5FA/FFFFFF?text=Nivel+Primaria" alt="Nivel Primaria"
+                            class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold mb-2">Primaria</h3>
+                            <p class="text-gray-600 mb-4 h-24">Sentamos las bases del futuro a través de una formación
+                                integral, combinando la excelencia académica con el desarrollo de valores en un ambiente
+                                feliz y seguro.</p>
+                            <a href="nivel-primaria.html" class="font-bold text-blue-800 hover:text-yellow-500">Ver Más
+                                <i class="fas fa-arrow-right ml-1"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden animate-on-scroll">
+                        <img src="https://placehold.co/600x400/3B82F6/FFFFFF?text=Nivel+Secundaria"
+                            alt="Nivel Secundaria" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold mb-2">Secundaria</h3>
+                            <p class="text-gray-600 mb-4 h-24">Formamos líderes con pensamiento crítico y un sólido
+                                proyecto de vida. Nuestra propuesta combina una rigurosa preparación preuniversitaria
+                                con el desarrollo de habilidades para un mundo globalizado.</p>
+                            <a href="nivel-secundaria.html" class="font-bold text-blue-800 hover:text-yellow-500">Ver
+                                Más <i class="fas fa-arrow-right ml-1"></i></a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="quienes-somos" class="py-16 bg-blue-50 overflow-hidden">
+            <div class="container mx-auto px-6 lg:px-8">
+                <div class="flex flex-col lg:flex-row items-center gap-12">
+                    <div class="lg:w-1/2 animate-on-scroll">
+                        <img src="imagen/insignia.png" alt="Insignia del Colegio" class="rounded-lg shadow-xl"
+                            style="width: 70%; margin: 0 auto; display: block;">
+                    </div>
+                    <div class="lg:w-1/2 animate-on-scroll">
+                        <h2 class="text-3xl font-bold text-blue-900">Una Institución con Historia y Futuro</h2>
+                        <h4 class="text-xl font-semibold text-gray-700 mt-6">Nuestros Valores</h4>
+                        <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-y-2 text-gray-700">
+                            <p class="font-bold flex items-center"><i
+                                    class="fas fa-check-circle text-green-500 mr-3"></i>Puntualidad</p>
+                            <p class="font-bold flex items-center"><i
+                                    class="fas fa-check-circle text-green-500 mr-3"></i>Respeto</p>
+                            <p class="font-bold flex items-center"><i
+                                    class="fas fa-check-circle text-green-500 mr-3"></i>Solidaridad</p>
+                            <p class="font-bold flex items-center"><i
+                                    class="fas fa-check-circle text-green-500 mr-3"></i>Honradez</p>
+                            <p class="font-bold flex items-center"><i
+                                    class="fas fa-check-circle text-green-500 mr-3"></i>Responsabilidad</p>
+                            <p class="font-bold flex items-center"><i
+                                    class="fas fa-check-circle text-green-500 mr-3"></i>Tolerancia</p>
+                        </div>
+                        <h4 class="text-xl font-semibold text-gray-700 mt-8">Misión y Visión</h4>
+                        <p class="mt-2 text-gray-600">
+                            <strong class="text-blue-900">MISIÓN:</strong> Brindar una educación de calidad, inclusiva y
+                            contextualizada, promoviendo la igualdad de oportunidades y el respeto a la diversidad.
+                        </p>
+                        <p class="mt-4 text-gray-600">
+                            <strong class="text-blue-900">VISIÓN:</strong> Ser una institución referente en la
+                            transformación educativa, enfocada en el desarrollo integral de los estudiantes.
+                        </p>
+                        <a href="historia.html" class="mt-8 inline-block bg-blue-800 text-white font-bold py-3 px-6 rounded-full hover:bg-blue-700 transition">Conoce más sobre nosotros</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="admision" class="py-16 bg-cover bg-center"
+            style="background-image: url('https://placehold.co/1920x1080/FBBF24/333333?text=Admisión');">
+            <div class="container mx-auto px-6 lg:px-8 text-center bg-white bg-opacity-90 p-10 rounded-lg max-w-4xl">
+                <h2 class="text-3xl font-bold text-blue-900">Proceso de Admisión 2026</h2>
+                <p class="mt-4 text-gray-700 text-lg">Únete a la gran familia de Ángel Custodio García Ramírez.</p>
+                <div class="mt-8 flex flex-col md:flex-row justify-center items-center gap-4 md:gap-8 text-left">
+                    <div class="flex items-center"><span class="text-3xl font-bold text-blue-800 mr-3">1.</span>
+                        Solicita Información</div>
+                    <div class="flex items-center"><span class="text-3xl font-bold text-blue-800 mr-3">2.</span> Visita
+                        Guiada</div>
+                    <div class="flex items-center"><span class="text-3xl font-bold text-blue-800 mr-3">3.</span>
+                        Entrevista Familiar</div>
+                    <div class="flex items-center"><span class="text-3xl font-bold text-blue-800 mr-3">4.</span>
+                        Matrícula</div>
+                </div>
+                <a href="#"
+                    class="mt-10 inline-block bg-green-600 text-white font-bold py-4 px-10 rounded-full text-xl hover:bg-green-500 transition">¡descarga
+                    el
+                    formato!</a>
+            </div>
+        </section>
+
+        <section id="noticias" class="py-16 overflow-hidden">
+            <div class="container mx-auto px-6 lg:px-8 text-center">
+                <h2 class="text-3xl font-bold text-blue-900">Últimas Noticias y Eventos</h2>
+                <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden text-left animate-on-scroll">
+                        <img src="https://placehold.co/600x400/93C5FD/FFFFFF?text=EUREKA+2025" alt="Noticias Eureka"
+                            class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <p class="text-sm text-gray-500 mb-2">29 de Agosto, 2025</p>
+                            <h3 class="text-xl font-bold mb-3">Nuestros alumnos presentan sus proyectos en la Feria de
+                                Ciencia y Tecnología.</h3>
+                            <a href="https://www.facebook.com/share/v/1DJ99o8q5p/" target="_blank"
+                                rel="noopener noreferrer" class="font-bold text-blue-800 hover:text-yellow-500">Leer Más
+                                <i class="fas fa-arrow-right ml-1"></i></a>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden text-left animate-on-scroll">
+                        <img src="https://placehold.co/600x400/60A5FA/FFFFFF?text=Encuentro+De+Escritores"
+                            alt="Escritores Regionales" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <p class="text-sm text-gray-500 mb-2">12 de Agosto, 2025</p>
+                            <h3 class="text-xl font-bold mb-3">En nuestra I.E. ANGEL CUSTODIO GARCÍA RAMIREZ se
+                                desarrollo con éxito el II ENCUENTRO CON ESCRITORES REGIONALES.</h3>
+                            <a href="https://www.facebook.com/share/p/176dSC2hse/" target="_blank"
+                                rel="noopener noreferrer" class="font-bold text-blue-800 hover:text-yellow-500">Leer Más
+                                <i class="fas fa-arrow-right ml-1"></i></a>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden text-left animate-on-scroll">
+                        <img src="https://placehold.co/600x400/3B82F6/FFFFFF?text=Perú+lee+2025" alt="Perú Lee"
+                            alt="Día de la Tierra" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <p class="text-sm text-gray-500 mb-2">14 de Julio, 2025</p>
+                            <h3 class="text-xl font-bold mb-3">Su dedicación, esfuerzo y amor por la lectura los han
+                                llevado a este gran logro.</h3>
+                            <a href="https://www.facebook.com/share/p/1A2BxzBpxw/" target="_blank"
+                                rel="noopener noreferrer" class="font-bold text-blue-800 hover:text-yellow-500">Leer Más
+                                <i class="fas fa-arrow-right ml-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contacto" class="bg-blue-900 text-white pt-16 pb-8">
+        <div class="container mx-auto px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div>
+                <div class="flex items-center space-x-3 mb-4">
+                    <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center overflow-hidden">
+                        <img src="imagen/insignia.png" alt="Insignia del Colegio" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-lg font-bold">Ángel Custodio García Ramírez</h3>
+                </div>
+                <p class="text-blue-200 text-sm">[ESPACIO PARA UN BREVE PÁRRAFO SOBRE EL LEMA O LA FILOSOFÍA DEL
+                    COLEGIO.]</p>
+            </div>
+            <div>
+                <h4 class="font-bold text-lg mb-4">Enlaces Rápidos</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#propuesta" class="text-blue-200 hover:text-white">Nuestra Propuesta</a></li>
+                    <li><a href="#niveles" class="text-blue-200 hover:text-white">Niveles Educativos</a></li>
+                    <li><a href="#admision" class="text-blue-200 hover:text-white">Admisión</a></li>
+                    <li><a href="#noticias" class="text-blue-200 hover:text-white">Noticias</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-lg mb-4">Contacto</h4>
+                <ul class="space-y-3 text-sm text-blue-200">
+                    <li class="flex items-start"><i class="fas fa-map-marker-alt mt-1 mr-3"></i><span>Jr. Progreso 512, Tarapoto 22201</span></li>
+                    <li class="flex items-start"><i class="fas fa-phone-alt mt-1 mr-3"></i><span>979 305 318</span></li>
+                    <li class="flex items-start"><i class="fas fa-envelope mt-1 mr-3"></i><span>[CORREO DE
+                            INFORMES]</span></li>
+                </ul>
+                <div class="mt-4 flex space-x-4">
+                    <a href="https://www.facebook.com/AngelCustodioGarciaRamirez" target="_blank"
+                        rel="noopener noreferrer" class="flex items-center space-x-2 text-xl hover:text-yellow-350">
+                        <i class="fab fa-facebook-f"></i>
+                        <span>Facebook Oficial</span>
+                    </a>
+                </div>
+            </div>
+            <div>
+                <h4 class="font-bold text-lg mb-4">Legal</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="politica-privacidad.html" class="text-blue-200 hover:text-white">Políticas de Privacidad</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="mt-12 border-t border-blue-800 pt-6 text-center text-sm text-blue-300">
+            <p>Copyright © 2025 I.E. Ángel Custodio García Ramírez. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

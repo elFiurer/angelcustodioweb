@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nivel Primaria - I.E. Ángel Custodio García Ramírez</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6; /* Un gris un poco más claro */
+        }
+
+        /* --- ESTILOS PARA LA INSIGNIA --- */
+        .insignia-container {
+            position: absolute;
+            z-index: 10;
+            width: 120px; /* Tamaño para móviles */
+            height: 120px;
+            /* Posición para móviles: Centrada y arriba */
+            top: 0;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            
+            background-color: #fff;
+            border-radius: 0.5rem; /* 8px */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0.5rem; /* Pequeño espacio interior */
+        }
+        
+        .insignia-container img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        /* Soporte para móviles y pantallas más grandes (Desktop) */
+        @media (min-width: 768px) {
+            .insignia-container {
+                width: 160px; /* Un poco más grande en desktop */
+                height: 160px;
+                /* Posición para desktop: Esquina superior izquierda */
+                top: 40px;
+                left: 40px;
+                transform: none; /* Reseteamos la transformación */
+            }
+        }
+    </style>
+</head>
+
+<body class="text-gray-800">
+
+    <header class="bg-white shadow-md sticky top-0 z-20">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="imagen/insignia.png" alt="Insignia" class="h-10 w-10 mr-3 p-1 bg-white border rounded-md">
+                <a href="index.html" class="text-xl font-bold text-blue-900">I.E. Ángel Custodio G.R.</a>
+            </div>
+            <nav class="hidden md:flex space-x-6">
+                <a href="index.html#niveles" class="text-gray-700 hover:text-yellow-500">Niveles</a>
+                <a href="#" class="text-gray-700 hover:text-yellow-500">Admisión</a>
+                <a href="#" class="text-gray-700 hover:text-yellow-500">Nosotros</a>
+                <a href="#contacto" class="text-gray-700 hover:text-yellow-500">Contacto</a>
+            </nav>
+            <div class="md:hidden">
+                <button class="text-gray-800 focus:outline-none">
+                    <i class="fas fa-bars fa-lg"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 lg:px-8 py-12 md:py-20">
+        <div class="bg-white rounded-lg shadow-xl p-6 md:p-10 lg:p-12 relative">
+            
+            <div class="insignia-container">
+                <img src="imagen/insignia.png" alt="Insignia del Colegio">
+            </div>
+
+            <div class="pt-16 md:pt-0">
+                <h1 class="text-4xl md:text-5xl font-extrabold text-blue-900 text-center mb-8">
+                    Nivel Primaria
+                </h1>
+                <p class="text-xl text-gray-700 text-center max-w-3xl mx-auto mb-12">
+                    Sentamos las bases del futuro a través de una formación integral, combinando la excelencia académica con el desarrollo de valores en un ambiente feliz, seguro y estimulante para cada niño.
+                </p>
+
+                <div class="prose max-w-none text-lg leading-relaxed text-gray-700 mb-12">
+                    <h2 class="text-3xl font-bold text-yellow-500 mb-4">Nuestra Historia</h2>
+                    <p>
+                        El Nivel Primaria de nuestra institución fue fundado el <b>15 de marzo de 1985</b>, con el firme propósito de ofrecer una educación de calidad y calidez a los niños de Tarapoto. Nacimos bajo la dedicada dirección de nuestra primera subdirectora, la <b>Lic. Rosa Arévalo de Pinedo</b>, una educadora visionaria cuyo legado de amor por la enseñanza y la formación de buenas personas perdura hasta hoy en nuestros pasillos.
+                    </p>
+
+                    <h2 class="text-3xl font-bold text-yellow-500 mt-8 mb-4">Misión y Visión</h2>
+                    <h3 class="text-2xl font-semibold text-blue-800 mb-2">Misión:</h3>
+                    <p>
+                        Proporcionar a cada niño una base académica y emocional sólida, desarrollando sus habilidades fundamentales en comunicación y matemáticas, despertando su curiosidad innata y cultivando un amor por el aprendizaje que los acompañará toda la vida, todo dentro de un entorno de respeto, alegría y seguridad.
+                    </p>
+                    <h3 class="text-2xl font-semibold text-blue-800 mt-4 mb-2">Visión:</h3>
+                    <p>
+                        Ser reconocidos como el nivel primario líder en Tarapoto, donde cada estudiante se siente feliz, valorado y motivado, desarrollando su máximo potencial a través de una educación integral, lúdica e innovadora que los prepare con éxito para los retos de la secundaria y del futuro.
+                    </p>
+
+                    <h2 class="text-3xl font-bold text-yellow-500 mt-8 mb-4">Nuestra Identidad Amazónica</h2>
+                    <p>
+                        Valoramos profundamente nuestras raíces. Durante el año, integramos las costumbres de Tarapoto en nuestras actividades, destacando la celebración de la <b>Fiesta de San Juan</b>. En esta fecha, nuestros alumnos no solo se divierten, sino que aprenden sobre nuestra rica gastronomía preparando el tradicional "juane", participan en danzas típicas y se maravillan con las fascinantes historias y leyendas de nuestra amazonía, fortaleciendo así su identidad cultural.
+                    </p>
+
+                    <h2 class="text-3xl font-bold text-yellow-500 mt-8 mb-4">Formación Académica Integral</h2>
+                    <p>Nuestro enfoque pedagógico está diseñado para el desarrollo completo del estudiante:</p>
+                    <ul class="list-disc list-inside space-y-2 ml-4 mb-4">
+                        <li><strong>Plan de Estudios Sólido:</strong> Potenciamos las áreas de Matemática, Comunicación, Ciencia y Tecnología y Personal Social, asegurando que todos los alumnos alcancen las competencias esperadas.</li>
+                        <li><strong>Inglés desde Pequeños:</strong> Ofrecemos un programa de inglés dinámico que permite a los niños familiarizarse con un segundo idioma de manera natural y divertida.</li>
+                        <li><strong>Talleres Creativos y Deportivos:</strong> Contamos con talleres de arte, música, danzas y diversas disciplinas deportivas que complementan la formación académica y desarrollan sus talentos.</li>
+                        <li><strong>Acompañamiento Constante:</strong> Un departamento psicopedagógico acompaña a nuestros estudiantes, brindando el soporte necesario para su bienestar emocional y social.</li>
+                    </ul>
+                </div>
+
+                <div class="mt-12">
+                    <h2 class="text-3xl font-bold text-blue-900 text-center mb-8">Momentos en Primaria</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="rounded-lg overflow-hidden shadow-md"><img src="imagen/primaria-aula.jpg" alt="Aula de Primaria" class="w-full h-56 object-cover transform hover:scale-105 transition duration-300"></div>
+                        <div class="rounded-lg overflow-hidden shadow-md"><img src="imagen/primaria-arte.jpg" alt="Taller de Arte en Primaria" class="w-full h-56 object-cover transform hover:scale-105 transition duration-300"></div>
+                        <div class="rounded-lg overflow-hidden shadow-md"><img src="imagen/primaria-deporte.jpg" alt="Actividad deportiva en Primaria" class="w-full h-56 object-cover transform hover:scale-105 transition duration-300"></div>
+                        <div class="rounded-lg overflow-hidden shadow-md"><img src="imagen/primaria-deporte2.jpg" alt="Actividad deportiva en Primaria" class="w-full h-56 object-cover transform hover:scale-105 transition duration-300"></div>
+                        <div class="rounded-lg overflow-hidden shadow-md"><img src="imagen/primaria-aula2.jpg" alt="Aula de Primaria" class="w-full h-56 object-cover transform hover:scale-105 transition duration-300"></div>
+                        <div class="rounded-lg overflow-hidden shadow-md"><img src="imagen/primaria-arte2.jpg" alt="Taller de Arte en Primaria" class="w-full h-56 object-cover transform hover:scale-105 transition duration-300"></div>
+                    </div>
+                </div>
+
+                <div class="mt-12 border-t pt-6 text-center">
+                    <a href="index.html#niveles" class="font-bold text-blue-800 hover:text-yellow-500 inline-flex items-center">
+                        <i class="fas fa-arrow-left mr-2"></i>Volver a Niveles
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer id="contacto" class="bg-blue-900 text-white pt-16 pb-8"></footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

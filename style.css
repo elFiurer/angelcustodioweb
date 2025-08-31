@@ -1,0 +1,107 @@
+/* style.css */
+
+/* 1. Configuración General
+  ====================================================
+  - Se establece 'Inter' como la fuente principal.
+  - 'scroll-behavior: smooth;' permite un desplazamiento suave al usar los enlaces del menú.
+*/
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 2. Estilos para la Animación del Encabezado Principal (Versión Aislada y Definitiva) */
+#main-headline {
+    /* --- Reglas de Aislamiento y Diseño --- */
+    display: flex;          /* Activa el modo de columnas flexibles */
+    flex-wrap: wrap;        /* Permite que las palabras pasen a la siguiente línea */
+    justify-content: flex-start; /* Alinea las palabras a la izquierda */
+    width: 100%;            /* OBLIGA al título a ocupar todo el ancho disponible */
+
+    /* --- Reglas de Animación (ya existentes) --- */
+    perspective: 400px;
+}
+
+
+/*
+  - A cada palabra (que el JavaScript convierte en un <span>) se le aplican estos estilos.
+  - Inicialmente, las palabras están invisibles y "volteadas" hacia abajo.
+*/
+#main-headline span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(30px) rotateX(-90deg);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/*
+  - Cuando el JavaScript añade la clase '.visible' al h1, las palabras se hacen visibles
+    y giran a su posición final, creando el efecto de aparición.
+*/
+#main-headline.visible span {
+  opacity: 1;
+  transform: translateY(0) rotateX(0);
+}
+
+/* 3. Sistema de Animación Unificado al Hacer Scroll
+  ================================================================ */
+/*
+  - Estado inicial para CUALQUIER elemento que tenga la clase '.animate-on-scroll'.
+  - Los elementos estarán invisibles y ligeramente desplazados hacia abajo.
+*/
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/*
+  - Estado final: Cuando el JavaScript detecta el elemento y le añade la clase '.is-visible',
+    el elemento se vuelve visible y sube a su posición original.
+*/
+.animate-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 6. Estilos para el Nombre del Colegio en el Encabezado (Header)
+  ================================================================ */
+
+/* Color base para el enlace del nombre del colegio */
+header .container a.text-blue-900 {
+  color: #1a202c;
+  /* Color oscuro similar al "Caicedo" de tu referencia, o blue-900 si prefieres */
+}
+
+/* Estilo para la primera parte: "Ángel" */
+header .header-highlight-1 {
+  color: #1a202c;
+  /* Puedes dejar este color oscuro */
+  /* font-weight ya lo toma del padre si no lo sobrescribes */
+}
+
+/* Estilo para la segunda parte: "Custodio" */
+header .header-highlight-2 {
+  color: #00BCD4;
+  /* Color azul cian vibrante, similar al "Educa" */
+  /* font-weight ya lo toma del padre si no lo sobrescribes */
+}
+/* Fondo para la sección Hero/Destacada */
+/* Fondo para la sección Hero/Destacada (CORREGIDO) */
+.hero-background {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('imagen/fondo-hero.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Efecto parallax */
+}
+
+/* Opcional: Para el efecto parallax (comentar si no se quiere) */
+.hero-background {
+    background-attachment: fixed;
+}

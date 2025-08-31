@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nivel Secundaria - I.E. Ángel Custodio García Ramírez</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+
+        /* --- ESTILOS PARA LA INSIGNIA --- */
+        .insignia-container {
+            position: absolute;
+            z-index: 10;
+            width: 120px;
+            height: 120px;
+            /* Posición para móviles: Centrada y arriba */
+            top: 0;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            
+            background-color: #fff;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0.5rem;
+        }
+        
+        .insignia-container img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        /* Soporte para móviles y pantallas más grandes (Desktop) */
+        @media (min-width: 768px) {
+            .insignia-container {
+                width: 160px;
+                height: 160px;
+                /* Posición para desktop: Esquina superior izquierda */
+                top: 40px;
+                left: 40px;
+                transform: none;
+            }
+        }
+    </style>
+</head>
+
+<body class="text-gray-800">
+
+    <header class="bg-white shadow-md sticky top-0 z-20">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="imagen/insignia.png" alt="Insignia" class="h-10 w-10 mr-3 p-1 bg-white border rounded-md">
+                <a href="index.html" class="text-xl font-bold text-blue-900">I.E. Ángel Custodio G.R.</a>
+            </div>
+            <nav class="hidden md:flex space-x-6">
+                <a href="index.html#niveles" class="text-gray-700 hover:text-yellow-500">Niveles</a>
+                <a href="#" class="text-gray-700 hover:text-yellow-500">Admisión</a>
+                <a href="#" class="text-gray-700 hover:text-yellow-500">Nosotros</a>
+                <a href="#contacto" class="text-gray-700 hover:text-yellow-500">Contacto</a>
+            </nav>
+            <div class="md:hidden">
+                <button class="text-gray-800 focus:outline-none">
+                    <i class="fas fa-bars fa-lg"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 lg:px-8 py-12 md:py-20">
+        <div class="bg-white rounded-lg shadow-xl p-6 md:p-10 lg:p-12 relative">
+            
+            <div class="insignia-container">
+                <img src="imagen/insignia.png" alt="Insignia del Colegio">
+            </div>
+
+            <div class="pt-16 md:pt-0">
+                <h1 class="text-4xl md:text-5xl font-extrabold text-blue-900 text-center mb-8">
+                    Nivel Secundaria
+                </h1>
+                <p class="text-xl text-gray-700 text-center max-w-3xl mx-auto mb-12">
+                    Formamos líderes con pensamiento crítico y un sólido proyecto de vida. Nuestra propuesta combina una rigurosa preparación preuniversitaria con el desarrollo de habilidades para un mundo globalizado.
+                </p>
+
+                <div class="prose max-w-none text-lg leading-relaxed text-gray-700 mb-12">
+                    <h2 class="text-3xl font-bold text-yellow-500 mb-4">Nuestra Historia</h2>
+                    <p>
+                        El Nivel Secundaria se inauguró el <b>3 de marzo de 1991</b>, como respuesta natural al crecimiento de nuestra primera promoción de primaria. Fue liderado por el visionario educador, el <b>Mg. Carlos Vásquez Salas</b>, quien implementó desde sus inicios un innovador modelo de preparación preuniversitaria que nos distingue y es pilar de nuestro éxito hasta hoy.
+                    </p>
+
+                    <h2 class="text-3xl font-bold text-yellow-500 mt-8 mb-4">Misión y Visión</h2>
+                    <h3 class="text-2xl font-semibold text-blue-800 mb-2">Misión:</h3>
+                    <p>
+                        Desarrollar en cada joven un líder con pensamiento crítico, dotado de las competencias académicas y habilidades socioemocionales necesarias para acceder con éxito a la educación superior y construir un proyecto de vida sólido, ético y con propósito.
+                    </p>
+                    <h3 class="text-2xl font-semibold text-blue-800 mt-4 mb-2">Visión:</h3>
+                    <p>
+                        Ser la institución de referencia en la amazonía peruana por formar bachilleres líderes, innovadores y socialmente responsables, preparados para destacar en las mejores universidades del país y del mundo, y para contribuir positivamente a la sociedad.
+                    </p>
+
+                    <h2 class="text-3xl font-bold text-yellow-500 mt-8 mb-4">Liderazgo y Compromiso Social</h2>
+                    <p>
+                        Nuestros estudiantes de secundaria asumen un rol protagónico en la promoción de nuestra cultura y el servicio a la comunidad. A través de proyectos de voluntariado, debates y la organización de eventos, aplican sus conocimientos para revalorar las tradiciones de San Martín y proponer soluciones a los desafíos de nuestro entorno, conectando su aprendizaje con la realidad.
+                    </p>
+
+                    <h2 class="text-3xl font-bold text-yellow-500 mt-8 mb-4">Preparación para el Futuro</h2>
+                    <p>Nuestra sólida formación académica se enfoca en el éxito post-escolar:</p>
+                    <ul class="list-disc list-inside space-y-2 ml-4 mb-4">
+                        <li><strong>Exigencia Preuniversitaria:</strong> Ofrecemos una preparación rigurosa en Ciencias y Humanidades, con simulacros y talleres constantes que aseguran un excelente desempeño en los exámenes de admisión.</li>
+                        <li><strong>Orientación Vocacional:</strong> Guiamos a cada estudiante en el descubrimiento de su vocación a través de tests, charlas con profesionales y visitas a las principales universidades del país.</li>
+                        <li><strong>Proyectos de Innovación (STEM):</strong> Fomentamos el interés por la Ciencia, Tecnología, Ingeniería y Matemáticas a través de proyectos prácticos, ferias de ciencias y clubes de robótica.</li>
+                        <li><strong>Debate y Liderazgo:</strong> Desarrollamos habilidades de argumentación, oratoria y liderazgo a través de nuestro taller de debate y la participación en modelos de Naciones Unidas (MUN).</li>
+                    </ul>
+                </div>
+
+                <div class="mt-12">
+                    <h2 class="text-3xl font-bold text-blue-900 text-center mb-8">Momentos en Secundaria</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="rounded-lg overflow-hidden shadow-md"><img src="imagen/secundaria-aula.jpg" alt="Aula de Primaria" class="w-full h-56 object-cover transform hover:scale-105 transition duration-300"></div>
+                        <div class="rounded-lg overflow-hidden shadow-md"><img src="imagen/secundaria-arte.jpg" alt="Taller de Arte en Primaria" class="w-full h-56 object-cover transform hover:scale-105 transition duration-300"></div>
+                        <div class="rounded-lg overflow-hidden shadow-md"><img src="imagen/secundaria-deporte.jpg" alt="Actividad deportiva en Primaria" class="w-full h-56 object-cover transform hover:scale-105 transition duration-300"></div>
+                        <div class="rounded-lg overflow-hidden shadow-md"><img src="imagen/secundaria-deporte2.jpg" alt="Actividad deportiva en Primaria" class="w-full h-56 object-cover transform hover:scale-105 transition duration-300"></div>
+                        <div class="rounded-lg overflow-hidden shadow-md"><img src="imagen/secundaria-aula2.jpg" alt="Aula de Primaria" class="w-full h-56 object-cover transform hover:scale-105 transition duration-300"></div>
+                        <div class="rounded-lg overflow-hidden shadow-md"><img src="imagen/secundaria-arte2.jpg" alt="Taller de Arte en Primaria" class="w-full h-56 object-cover transform hover:scale-105 transition duration-300"></div>
+                    </div>
+                </div>
+
+                <div class="mt-12 border-t pt-6 text-center">
+                    <a href="index.html#niveles" class="font-bold text-blue-800 hover:text-yellow-500 inline-flex items-center">
+                        <i class="fas fa-arrow-left mr-2"></i>Volver a Niveles
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer id="contacto" class="bg-blue-900 text-white pt-16 pb-8"></footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
