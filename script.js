@@ -81,5 +81,24 @@ document.addEventListener('DOMContentLoaded', function () {
         element.style.transitionDelay = `${(index % 4) * 100}ms`;
         observer.observe(element);
     });
+// ====================================================================
+    // 5. LÓGICA PARA EL MODAL DE ALERTA
+    // ====================================================================
+    const downloadBtn = document.getElementById('download-btn');
+    const alertModal = document.getElementById('alert-modal');
+    const modalOkBtn = document.getElementById('modal-ok-btn');
 
+    if (downloadBtn && alertModal && modalOkBtn) {
+        // Evento para MOSTRAR el modal
+        downloadBtn.addEventListener('click', (event) => {
+            event.preventDefault(); // Evita que la página salte hacia arriba
+            alertModal.classList.remove('hidden');
+        });
+
+        // Evento para OCULTAR el modal con el botón OK
+        modalOkBtn.addEventListener('click', () => {
+            alertModal.classList.add('hidden');
+        });
+    }
 });
+
