@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elecciones Estudiantiles 2025 - I.E. Ángel Custodio García Ramírez</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .party-card {
+            transition: all 0.3s ease;
+        }
+
+        .party-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .vote-btn {
+            transition: all 0.3s ease;
+        }
+
+        .vote-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .progress-bar {
+            transition: width 1s ease-in-out;
+        }
+
+        @keyframes pulse-slow {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: .7;
+            }
+        }
+
+        .animate-pulse-slow {
+            animation: pulse-slow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-to-br from-blue-50 via-white to-red-50">
+
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center p-4">
+            <div class="flex items-center space-x-3">
+                <img src="imagen/insignia.png" alt="Insignia del Colegio" class="w-14 h-14">
+                <a href="index.html" class="text-lg sm:text-xl font-bold">
+                    <span class="text-yellow-500">Ángel</span> <span class="text-red-600">Custodio</span>
+                    <span class="text-blue-900">García</span> <span class="text-red-600">Ramírez</span>
+                </a>
+            </div>
+            <a href="index.html"
+                class="bg-blue-900 text-white font-bold py-2 px-5 rounded-full hover:bg-blue-800 transition">
+                <i class="fas fa-home mr-2"></i>Volver al Inicio
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="bg-gradient-to-r from-blue-900 via-blue-800 to-red-700 text-white py-20">
+            <div class="container mx-auto px-6 text-center">
+                <div class="animate-pulse-slow inline-block mb-4">
+                    <i class="fas fa-vote-yea text-6xl"></i>
+                </div>
+                <h1 class="text-4xl md:text-6xl font-extrabold mb-4">
+                    Elecciones Estudiantiles 2025
+                </h1>
+                <p class="text-xl md:text-2xl mb-6">¡Tu voz importa! Conoce a los candidatos y expresa tu intención de voto</p>
+                <div class="bg-white/20 backdrop-blur-sm rounded-lg p-4 inline-block">
+                    <p class="text-lg font-semibold">🗳️ Votación abierta hasta el 15 de Noviembre</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resultados en Tiempo Real -->
+        <section class="py-12 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-10">
+                    <h2 class="text-3xl font-bold text-blue-900 mb-3">
+                        <i class="fas fa-chart-bar mr-2"></i>Intención de Voto en Tiempo Real
+                    </h2>
+                    <p class="text-gray-600">Total de votos: <span id="total-votes" class="font-bold text-2xl text-blue-800">0</span></p>
+                </div>
+
+                <div id="results-container" class="max-w-4xl mx-auto space-y-4">
+                    <!-- Los resultados se llenarán dinámicamente -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Candidatos y Propuestas -->
+        <section class="py-16 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-blue-900 text-center mb-12">
+                    Conoce a los Candidatos
+                </h2>
+
+                <div id="parties-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Los partidos se llenarán dinámicamente -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Votación -->
+        <section class="py-16 bg-gradient-to-r from-blue-100 to-red-100">
+            <div class="container mx-auto px-6">
+                <div class="max-w-2xl mx-auto bg-white rounded-2xl shadow-2xl p-8">
+                    <div class="text-center mb-8">
+                        <i class="fas fa-hand-point-up text-5xl text-blue-800 mb-4"></i>
+                        <h2 class="text-3xl font-bold text-blue-900 mb-3">¡Emite tu Intención de Voto!</h2>
+                        <p class="text-gray-600">Selecciona el partido de tu preferencia</p>
+                    </div>
+
+                    <form id="vote-form" class="space-y-6">
+                        <div>
+                            <label class="block text-gray-700 font-semibold mb-3">Selecciona tu candidato:</label>
+                            <div id="vote-options" class="space-y-3">
+                                <!-- Las opciones se llenarán dinámicamente -->
+                            </div>
+                        </div>
+
+                        <div id="vote-message" class="hidden p-4 rounded-lg text-center font-semibold"></div>
+
+                        <button type="submit" id="submit-vote-btn"
+                            class="w-full bg-gradient-to-r from-blue-600 to-blue-800 text-white font-bold py-4 px-8 rounded-full text-xl hover:from-blue-700 hover:to-blue-900 transition transform hover:scale-105 shadow-lg">
+                            <i class="fas fa-check-circle mr-2"></i>Confirmar Voto
+                        </button>
+
+                        <p class="text-sm text-gray-500 text-center">
+                            <i class="fas fa-info-circle mr-1"></i>
+                            Esta es una encuesta de intención de voto. Los resultados son referenciales.
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Información Adicional -->
+        <section class="py-16 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="max-w-4xl mx-auto">
+                    <h2 class="text-3xl font-bold text-blue-900 text-center mb-8">
+                        Información Importante
+                    </h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="bg-blue-50 p-6 rounded-lg text-center">
+                            <i class="fas fa-calendar-alt text-4xl text-blue-800 mb-3"></i>
+                            <h3 class="font-bold text-lg mb-2">Fecha de Elecciones</h3>
+                            <p class="text-gray-700">15 de Noviembre, 2025</p>
+                        </div>
+                        <div class="bg-red-50 p-6 rounded-lg text-center">
+                            <i class="fas fa-users text-4xl text-red-800 mb-3"></i>
+                            <h3 class="font-bold text-lg mb-2">Quiénes Votan</h3>
+                            <p class="text-gray-700">Todos los estudiantes del colegio</p>
+                        </div>
+                        <div class="bg-yellow-50 p-6 rounded-lg text-center">
+                            <i class="fas fa-trophy text-4xl text-yellow-600 mb-3"></i>
+                            <h3 class="font-bold text-lg mb-2">Periodo</h3>
+                            <p class="text-gray-700">Gestión 2026</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-blue-900 text-white py-8">
+        <div class="container mx-auto px-6 text-center">
+            <p class="mb-4">Copyright © 2025 I.E. Ángel Custodio García Ramírez</p>
+            <a href="index.html" class="text-yellow-400 hover:text-yellow-300 font-semibold">
+                <i class="fas fa-home mr-2"></i>Volver a la Página Principal
+            </a>
+        </div>
+    </footer>
+
+    <script src="elecciones.js"></script>
+</body>
+
+</html>
