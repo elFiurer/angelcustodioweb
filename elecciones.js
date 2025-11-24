@@ -152,20 +152,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
         partidos.forEach(partido => {
             const option = document.createElement('label');
-            option.className = 'flex flex-col items-center p-4 border-2 rounded-lg cursor-pointer hover:bg-gray-50 transition h-full';
+            option.className = 'flex flex-col items-center p-3 border-2 rounded-lg cursor-pointer hover:bg-gray-50 transition h-full';
             // En la función renderVoteOptions()
             option.innerHTML = `
-    <input type="radio" name="vote" value="${partido.id}" class="mb-3 w-5 h-5" required>
+    <input type="radio" name="vote" value="${partido.id}" class="mb-2 w-5 h-5" required>
     
     <img src="${partido.foto}" 
          alt="${partido.candidato}" 
-         class="rounded-full mb-3 object-cover" 
-         style="width: 100px; height: 100px;">
+         class="rounded-full mb-2 object-cover" 
+         style="width: 80px; height: 80px;">
          
     <div class="text-center">
-        <p class="font-bold text-base" style="color: ${partido.color}">${partido.siglas}</p>
-        <p class="text-gray-600 text-sm mt-1">${partido.nombre}</p>
-        <p class="text-xs font-semibold text-gray-800 mt-2">${partido.candidato}</p>
+        <p class="font-bold text-sm" style="color: ${partido.color}">${partido.siglas}</p>
+        <p class="text-gray-600 text-xs mt-1 line-clamp-2">${partido.nombre}</p>
+        <p class="text-xs font-semibold text-gray-800 mt-1">${partido.candidato}</p>
     </div>
 `;
             container.appendChild(option);
@@ -304,5 +304,68 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Actualizar resultados cada 5 segundos
     setInterval(renderResults, 5000);
+
+    // ====================================================================
+    // SISTEMA DE IDENTIFICACIÓN DE PC
+    // ====================================================================
+    function loadPCName() {
+        const pcName = localStorage.getItem('pc_name');
+        if (pcName) {
+            document.getElementById('pc-name').value = pcName;
+            document.getElementById('current-pc-name').textContent = pcName;
+            document.getElementById('pc-info').classList.remove('hidden');
+        }
+    }
+
+    window.savePCName = function() {
+        const pcName = document.getElementById('pc-name').value.trim();
+        if (pcName) {
+            localStorage.setItem('pc_name', pcName);
+            document.getElementById('current-pc-name').textContent = pcName;
+            document.getElementById('pc-info').classList.remove('hidden');
+            alert('✓ Nombre de PC guardado: ' + pcName);
+        } else {
+            alert('Por favor ingresa un nombre para la PC');
+        }
+    };
+
+    // ====================================================================
+    // FUNCIONES DE DESCARGA
+    // ====================================================================
+    window.downloadPDF = function() {
+        const pcName = localStorage.getItem('pc_name') || 'PC-SIN-NOMBRE';
+        
+        // Capturar la sección de resultados
+        const resultsSection = document.getElementById('results-container').parentElement;
+        
+        html2canvas(resultsSection, {
+            scale: 2,
+            backgroundColor: '#ffffff'
+        }).then(canvas => {
+            const { jsPDF } = window.jspdf;
+            const pdf = new jsPDF('p', 'mm', 'a4');
+            
+            // Agregar título
+            pdf.setFontSize(18);
+            pdf.setTextColor(30, 64, 175);
+            pdf.text('Resultados de Votación Estudiantil 2025', 105, 20, { align: 'center' });
+            
+            pdf.setFontSize(12);
+            pdf.setTextColor(0, 0, 0);
+            pdf.text(`PC: ${pcName}`, 20, 35);
+            pdf.text(`Fecha: ${new Date().toLocaleString('es-PE')}`, 20, 42);
+            
+            // Agregar imagen de resultados
+            const imgData = canvas.toDataURL('image/png');
+            const imgWidth = 170;
+            const imgHeight = (canvas.height * imgWidth) / canvas.width;
+            pdf.addImage(imgData, 'PNG', 20, 50, imgWidth, imgHeight);
+            
+            pdf.save(`Resultados_${pcName}_${new Date().getTime()}.pdf`);
+        });
+    };
+
+    // Cargar nombre de PC al iniciar
+    loadPCName();
 
 });
