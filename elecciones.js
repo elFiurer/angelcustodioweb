@@ -8,11 +8,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const partidos = [
         {
             id: 1,
-            nombre: "Partido Unión Estudiantil",
-            siglas: "PUE",
+            nombre: "Ser Custodiano es cuidar, respetar y progresar",
+            siglas: "JUVENTUD CON PROPÓSITO",
             color: "#3B82F6", // Azul
-            candidato: "María González",
-            foto: "https://ui-avatars.com/api/?name=Maria+Gonzalez&background=3B82F6&color=fff&size=200",
+            candidato: "juventud",
+            foto: "imagen/juventud.jpg",
             propuestas: [
                 "Implementar áreas de estudio recreativas",
                 "Mejorar la conectividad WiFi en todo el colegio",
@@ -22,11 +22,11 @@ document.addEventListener('DOMContentLoaded', function () {
         },
         {
             id: 2,
-            nombre: "Movimiento Juventud Activa",
-            siglas: "MJA",
+            nombre: "Nuestra Escencia es Liderar, nuestra Fuerza eres Tú",
+            siglas: "Fuerza Custodiana",
             color: "#EF4444", // Rojo
             candidato: "Carlos Pérez",
-            foto: "https://ui-avatars.com/api/?name=Carlos+Perez&background=EF4444&color=fff&size=200",
+            foto: "imagen/osito.jpg",
             propuestas: [
                 "Implementar máquinas expendedoras saludables",
                 "Crear espacios verdes y áreas de relajación",
@@ -36,30 +36,26 @@ document.addEventListener('DOMContentLoaded', function () {
         },
         {
             id: 3,
-            nombre: "Alianza por el Cambio",
-            siglas: "APC",
+            nombre: "Voto en blanco",
+            siglas: "Voto en blanco",
             color: "#10B981", // Verde
-            candidato: "Ana Rodríguez",
-            foto: "https://ui-avatars.com/api/?name=Ana+Rodriguez&background=10B981&color=fff&size=200",
+            candidato: "voto en blanco",
+            foto: "imagen/votoenblanco.jpg",
             propuestas: [
-                "Promover el reciclaje y cuidado ambiental",
-                "Crear un consejo estudiantil más participativo",
-                "Organizar ferias de ciencia y tecnología",
-                "Implementar talleres extracurriculares gratuitos"
+
+                "Cuando no sabes por quien votar, vota en blanco",
             ]
         },
         {
             id: 4,
-            nombre: "Frente Estudiantil Progresista",
+            nombre: "Voto Viciado",
             siglas: "FEP",
             color: "#F59E0B", // Amarillo/Naranja
-            candidato: "Luis Torres",
-            foto: "https://ui-avatars.com/api/?name=Luis+Torres&background=F59E0B&color=fff&size=200",
+            candidato: "voto viciado",
+            foto: "imagen/viciado.jpg",
             propuestas: [
-                "Digitalizar los procesos académicos",
-                "Crear una plataforma de comunicación estudiantes-docentes",
-                "Mejorar la cafetería y opciones de comida",
-                "Organizar eventos culturales y artísticos"
+                "Cuando no apoyas a ningun candidato y quieres anular tu voto, vota viciado",
+
             ]
         }
     ];
@@ -157,14 +153,21 @@ document.addEventListener('DOMContentLoaded', function () {
         partidos.forEach(partido => {
             const option = document.createElement('label');
             option.className = 'flex items-center p-4 border-2 rounded-lg cursor-pointer hover:bg-gray-50 transition';
+            // En la función renderVoteOptions()
             option.innerHTML = `
-                <input type="radio" name="vote" value="${partido.id}" class="mr-4 w-5 h-5" required>
-                <img src="${partido.foto}" alt="${partido.candidato}" class="w-12 h-12 rounded-full mr-4">
-                <div class="flex-1">
-                    <p class="font-bold" style="color: ${partido.color}">${partido.siglas} - ${partido.nombre}</p>
-                    <p class="text-sm text-gray-600">${partido.candidato}</p>
-                </div>
-            `;
+    <input type="radio" name="vote" value="${partido.id}" class="mr-4 w-5 h-5" required>
+    
+    <img src="${partido.foto}" 
+         alt="${partido.candidato}" 
+         class="rounded-full mr-4 object-cover" 
+         style="width: 120px; height: 120px; min-width: 120px;">
+         
+    <div class="flex-1">
+        <p class="font-bold text-lg" style="color: ${partido.color}">${partido.siglas}</p>
+        <p class="text-gray-600">${partido.nombre}</p>
+        <p class="text-sm font-semibold text-gray-800 mt-1">${partido.candidato}</p>
+    </div>
+`;
             container.appendChild(option);
         });
     }
@@ -175,7 +178,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function renderResults() {
         const votes = getVotes();
         const totalVotes = Object.values(votes).reduce((sum, count) => sum + count, 0);
-        
+
         document.getElementById('total-votes').textContent = totalVotes;
 
         // Calcular porcentajes y ordenar por votos
@@ -216,8 +219,9 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+   
     // ====================================================================
-    // MANEJAR VOTACIÓN
+    // MANEJAR VOTACIÓN (MODO URNA ELECTRÓNICA)
     // ====================================================================
     const voteForm = document.getElementById('vote-form');
     const voteMessage = document.getElementById('vote-message');
@@ -225,44 +229,45 @@ document.addEventListener('DOMContentLoaded', function () {
     voteForm.addEventListener('submit', function (e) {
         e.preventDefault();
 
-        if (hasVoted()) {
-            showMessage('Ya has votado anteriormente. Solo se permite un voto por persona.', 'warning');
-            return;
-        }
-
+        // 1. Validar que haya seleccionado algo
         const selectedVote = document.querySelector('input[name="vote"]:checked');
         if (!selectedVote) {
             showMessage('Por favor selecciona una opción antes de votar.', 'error');
             return;
         }
 
+        // 2. Obtener datos y Guardar voto
         const partidoId = parseInt(selectedVote.value);
-        const partido = partidos.find(p => p.id === partidoId);
-
-        // Guardar voto
         saveVote(partidoId);
-        markAsVoted();
 
-        // Actualizar resultados
+        // 3. Actualizar resultados en pantalla
         renderResults();
 
-        // Mostrar mensaje de éxito
-        showMessage(`¡Gracias por votar! Tu voto por ${partido.siglas} ha sido registrado exitosamente.`, 'success');
+        // 4. Mostrar mensaje de éxito
+        showMessage('¡Voto registrado! La pantalla se reiniciará en 3 segundos...', 'success');
 
-        // Deshabilitar formulario
-        voteForm.querySelectorAll('input').forEach(input => input.disabled = true);
-        document.getElementById('submit-vote-btn').disabled = true;
-        document.getElementById('submit-vote-btn').classList.add('opacity-50', 'cursor-not-allowed');
-
-        // Scroll a resultados
+        // 5. REINICIAR AUTOMÁTICAMENTE
         setTimeout(() => {
-            document.getElementById('results-container').scrollIntoView({ behavior: 'smooth' });
-        }, 1500);
+            // Limpiar formulario (quitar los puntitos)
+            voteForm.reset();
+            
+            // Ocultar el mensaje de éxito
+            voteMessage.classList.add('hidden');
+
+            // Quitar el color azul de la opción seleccionada
+            document.querySelectorAll('#vote-options label').forEach(label => {
+                label.classList.remove('border-blue-500', 'bg-blue-50');
+            });
+
+            // Subir la pantalla suavemente para el siguiente alumno
+            document.getElementById('vote-form').scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+        }, 3000); // Espera 3 segundos
     });
 
     function showMessage(message, type) {
         voteMessage.classList.remove('hidden', 'bg-green-100', 'text-green-800', 'bg-red-100', 'text-red-800', 'bg-yellow-100', 'text-yellow-800');
-        
+
         if (type === 'success') {
             voteMessage.classList.add('bg-green-100', 'text-green-800');
         } else if (type === 'error') {
@@ -270,7 +275,7 @@ document.addEventListener('DOMContentLoaded', function () {
         } else if (type === 'warning') {
             voteMessage.classList.add('bg-yellow-100', 'text-yellow-800');
         }
-        
+
         voteMessage.textContent = message;
         voteMessage.classList.remove('hidden');
     }
@@ -278,7 +283,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // ====================================================================
     // FUNCIÓN PARA SCROLL A VOTACIÓN
     // ====================================================================
-    window.scrollToVote = function(partidoId) {
+    window.scrollToVote = function (partidoId) {
         const radioButton = document.querySelector(`input[name="vote"][value="${partidoId}"]`);
         if (radioButton) {
             radioButton.checked = true;
@@ -287,15 +292,8 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('vote-form').scrollIntoView({ behavior: 'smooth', block: 'center' });
     };
 
-    // ====================================================================
-    // VERIFICAR SI YA VOTÓ
-    // ====================================================================
-    if (hasVoted()) {
-        voteForm.querySelectorAll('input').forEach(input => input.disabled = true);
-        document.getElementById('submit-vote-btn').disabled = true;
-        document.getElementById('submit-vote-btn').classList.add('opacity-50', 'cursor-not-allowed');
-        showMessage('Ya has emitido tu voto. Los resultados se actualizan en tiempo real.', 'warning');
-    }
+   
+    
 
     // ====================================================================
     // INICIALIZACIÓN
