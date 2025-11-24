@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
         {
             id: 2,
             nombre: "Nuestra Escencia es Liderar, nuestra Fuerza eres Tú",
-            siglas: "Fuerza Custodiana",
+            siglas: "FUERZA CUSTODIANA",
             color: "#EF4444", // Rojo
             candidato: "Carlos Pérez",
             foto: "imagen/osito.jpg",
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
         {
             id: 3,
             nombre: "Voto en blanco",
-            siglas: "Voto en blanco",
+            siglas: "VOTO EN BLANCO",
             color: "#10B981", // Verde
             candidato: "voto en blanco",
             foto: "imagen/votoenblanco.jpg",
@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
         {
             id: 4,
             nombre: "Voto Viciado",
-            siglas: "FEP",
+            siglas: "VOTO VICIADO",
             color: "#F59E0B", // Amarillo/Naranja
             candidato: "voto viciado",
             foto: "imagen/viciado.jpg",
@@ -152,20 +152,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
         partidos.forEach(partido => {
             const option = document.createElement('label');
-            option.className = 'flex items-center p-4 border-2 rounded-lg cursor-pointer hover:bg-gray-50 transition';
+            option.className = 'flex flex-col items-center p-4 border-2 rounded-lg cursor-pointer hover:bg-gray-50 transition h-full';
             // En la función renderVoteOptions()
             option.innerHTML = `
-    <input type="radio" name="vote" value="${partido.id}" class="mr-4 w-5 h-5" required>
+    <input type="radio" name="vote" value="${partido.id}" class="mb-3 w-5 h-5" required>
     
     <img src="${partido.foto}" 
          alt="${partido.candidato}" 
-         class="rounded-full mr-4 object-cover" 
-         style="width: 120px; height: 120px; min-width: 120px;">
+         class="rounded-full mb-3 object-cover" 
+         style="width: 100px; height: 100px;">
          
-    <div class="flex-1">
-        <p class="font-bold text-lg" style="color: ${partido.color}">${partido.siglas}</p>
-        <p class="text-gray-600">${partido.nombre}</p>
-        <p class="text-sm font-semibold text-gray-800 mt-1">${partido.candidato}</p>
+    <div class="text-center">
+        <p class="font-bold text-base" style="color: ${partido.color}">${partido.siglas}</p>
+        <p class="text-gray-600 text-sm mt-1">${partido.nombre}</p>
+        <p class="text-xs font-semibold text-gray-800 mt-2">${partido.candidato}</p>
     </div>
 `;
             container.appendChild(option);
