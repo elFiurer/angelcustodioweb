@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
             nombre: "Ser Custodiano es cuidar, respetar y progresar",
             siglas: "JUVENTUD CON PROPÓSITO",
             color: "#3B82F6", // Azul
-            candidato: "juventud",
+            candidato: "LISTA 1",
             foto: "imagen/juventud.jpg",
             propuestas: [
                 "Implementar áreas de estudio recreativas",
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
             nombre: "Nuestra Escencia es Liderar, nuestra Fuerza eres Tú",
             siglas: "FUERZA CUSTODIANA",
             color: "#EF4444", // Rojo
-            candidato: "Carlos Pérez",
+            candidato: "LISTA 2",
             foto: "imagen/osito.jpg",
             propuestas: [
                 "Implementar máquinas expendedoras saludables",
