@@ -239,7 +239,36 @@
             </a>
         </div>
     </footer>
-
+<div id="unlock-modal" class="fixed inset-0 bg-gray-900 bg-opacity-95 z-[100] hidden flex items-center justify-center backdrop-blur-sm">
+        <div class="bg-white rounded-2xl p-8 max-w-md w-full text-center shadow-2xl border-4 border-blue-600 transform transition-all scale-100">
+            <div class="mb-6">
+                <div class="mx-auto flex items-center justify-center h-20 w-20 rounded-full bg-green-100 mb-4">
+                    <i class="fas fa-check text-4xl text-green-600"></i>
+                </div>
+                <h2 class="text-3xl font-bold text-gray-800 mb-2">¡Voto Registrado!</h2>
+                <p class="text-gray-600 text-lg font-medium">Gracias por tu participación.</p>
+            </div>
+            
+            <div class="bg-blue-50 p-6 rounded-xl border border-blue-100">
+                <label class="block text-blue-900 font-bold mb-3 text-sm uppercase tracking-wide">
+                    <i class="fas fa-lock mr-2"></i>Desbloquear Urna
+                </label>
+                <input type="password" 
+                       id="unlock-code" 
+                       class="w-full text-center text-3xl tracking-[0.5em] font-bold px-4 py-3 border-2 border-blue-300 rounded-lg focus:outline-none focus:border-blue-600 focus:ring-4 focus:ring-blue-200 mb-4 transition-all bg-white text-gray-800 placeholder-gray-300" 
+                       placeholder="••••" 
+                       autocomplete="off"
+                       maxlength="10">
+                
+                <button id="unlock-btn" class="w-full bg-gradient-to-r from-blue-600 to-blue-800 text-white font-bold py-3 rounded-lg hover:from-blue-700 hover:to-blue-900 transition shadow-lg active:scale-95">
+                    Habilitar Siguiente Alumno
+                </button>
+                <p id="unlock-error" class="text-red-600 font-bold mt-3 text-sm hidden animate-pulse">
+                    <i class="fas fa-exclamation-circle mr-1"></i>Clave incorrecta
+                </p>
+            </div>
+        </div>
+    </div>
     <script src="elecciones.js"></script>
 </body>
 

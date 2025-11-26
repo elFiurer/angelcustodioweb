@@ -221,10 +221,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
    
     // ====================================================================
-    // MANEJAR VOTACIÓN (MODO URNA ELECTRÓNICA)
+    // MANEJAR VOTACIÓN (MODO URNA ELECTRÓNICA CON BLOQUEO)
     // ====================================================================
     const voteForm = document.getElementById('vote-form');
     const voteMessage = document.getElementById('vote-message');
+    
+    // Elementos del Modal de Bloqueo (Asegúrate de haber pegado el HTML en el paso 1)
+    const unlockModal = document.getElementById('unlock-modal');
+    const unlockCodeInput = document.getElementById('unlock-code');
+    const unlockBtn = document.getElementById('unlock-btn');
+    const unlockError = document.getElementById('unlock-error');
 
     voteForm.addEventListener('submit', function (e) {
         e.preventDefault();
@@ -236,46 +242,84 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        // 2. Obtener datos y Guardar voto
+        // 2. Obtener datos y Guardar voto (Esto sigue contando igual)
         const partidoId = parseInt(selectedVote.value);
         saveVote(partidoId);
 
         // 3. Actualizar resultados en pantalla
         renderResults();
 
-        // 4. Mostrar mensaje de éxito
-        showMessage('¡Voto registrado! La pantalla se reiniciará en 3 segundos...', 'success');
+        // 4. MOSTRAR BLOQUEO EN LUGAR DE ESPERAR
+        showUnlockScreen();
+    });
 
-        // 5. REINICIAR AUTOMÁTICAMENTE
+    // Función para mostrar la pantalla de bloqueo
+    function showUnlockScreen() {
+        unlockModal.classList.remove('hidden'); // Muestra el modal
+        unlockCodeInput.value = '';             // Limpia el campo de contraseña
+        unlockError.classList.add('hidden');    // Oculta error previo
+        
+        // Poner el cursor en el input automáticamente
         setTimeout(() => {
-            // Limpiar formulario (quitar los puntitos)
-            voteForm.reset();
+            unlockCodeInput.focus();
+        }, 100);
+    }
+
+    // Función para validar la clave y reiniciar
+    function validateAndReset() {
+        const code = unlockCodeInput.value;
+        
+        // AQUÍ ES DONDE SE CONFIGURA LA CONTRASEÑA (555)
+        if (code === '555') {
+            // --- CLAVE CORRECTA ---
             
-            // Ocultar el mensaje de éxito
+            // 1. Ocultar Modal
+            unlockModal.classList.add('hidden');
+            
+            // 2. Reiniciar Formulario
+            voteForm.reset();
             voteMessage.classList.add('hidden');
 
-            // Quitar el color azul de la opción seleccionada
+            // 3. Quitar bordes azules de la selección
             document.querySelectorAll('#vote-options label').forEach(label => {
                 label.classList.remove('border-blue-500', 'bg-blue-50');
             });
 
-            // Subir la pantalla suavemente para el siguiente alumno
+            // 4. Regresar la pantalla al inicio del formulario suavemente
             document.getElementById('vote-form').scrollIntoView({ behavior: 'smooth', block: 'center' });
 
-        }, 3000); // Espera 3 segundos
-    });
-
-    function showMessage(message, type) {
-        voteMessage.classList.remove('hidden', 'bg-green-100', 'text-green-800', 'bg-red-100', 'text-red-800', 'bg-yellow-100', 'text-yellow-800');
-
-        if (type === 'success') {
-            voteMessage.classList.add('bg-green-100', 'text-green-800');
-        } else if (type === 'error') {
-            voteMessage.classList.add('bg-red-100', 'text-red-800');
-        } else if (type === 'warning') {
-            voteMessage.classList.add('bg-yellow-100', 'text-yellow-800');
+        } else {
+            // --- CLAVE INCORRECTA ---
+            unlockError.classList.remove('hidden'); // Muestra mensaje de error
+            unlockCodeInput.value = '';             // Borra lo que escribió
+            unlockCodeInput.focus();                // Pone el cursor de nuevo
         }
+    }
 
+    // Evento Click en el botón de desbloquear
+    if(unlockBtn) {
+        unlockBtn.addEventListener('click', validateAndReset);
+    }
+    
+    // Evento "Enter" en el campo de contraseña
+    if(unlockCodeInput) {
+        unlockCodeInput.addEventListener('keyup', function(e) {
+            if (e.key === 'Enter') {
+                validateAndReset();
+            }
+        });
+    }
+
+    // Función auxiliar para mensajes de error (validación)
+    function showMessage(message, type) {
+        voteMessage.classList.remove('hidden', 'bg-green-100', 'text-green-800', 'bg-red-100', 'text-red-800');
+
+        if (type === 'error') {
+            voteMessage.classList.add('bg-red-100', 'text-red-800');
+        } else {
+            voteMessage.classList.add('bg-green-100', 'text-green-800');
+        }
+        
         voteMessage.textContent = message;
         voteMessage.classList.remove('hidden');
     }
